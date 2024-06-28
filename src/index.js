@@ -1,18 +1,17 @@
 const DURATION = 10;
 let remainingTime = DURATION;
-let timer = null;
 
 const time = document.getElementById("time");
-const toast = document.getElementById("toast");
-const toastMessage = document.getElementById("toast-message");
-const closeButton = document.getElementById("close-toast");
 
 const showToast = (message) => {
-  toastMessage.innerHTML = message;
+  const toast = document.getElementById("toast");
   toast.classList.add("show");
+  const toastMessage = document.getElementById("toast-message");
+  toastMessage.innerHTML = message;
   const toastTimer = setTimeout(() => {
     toast.classList.remove("show");
   }, 3000);
+  const closeButton = document.getElementById("close-toast");
   closeButton.addEventListener("click", () => {
     toast.classList.remove("show");
     time.innerHTML = DURATION;
@@ -33,6 +32,7 @@ const startCountdown = () => {
       clearInterval(countdown);
       showToast("Lift off! 🚀");
       time.innerHTML = DURATION;
+      remainingTime = DURATION;
     }
     remainingTime--;
   }, 1000);
